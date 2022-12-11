@@ -10,6 +10,9 @@
 (defwidget
   name: (identifier) @type)
 
+(literal
+  (identifier) @type)
+
 [ "(" ")" "{" "}" "[" "]" ] @punctuation.bracket
 
 [
@@ -23,11 +26,10 @@
 
 (template_subsitution
   "${" @punctuation.special
+  (identifier) @variable.other.member
   "}" @punctuation.special) @embedded
 
-[
-  "?:"
-  "!="
-  "?"
-  ":"
-] @operator
+(conditional
+  (identifier) @type
+  "?:" @operator)
+
